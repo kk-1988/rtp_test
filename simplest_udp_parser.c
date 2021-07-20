@@ -41,12 +41,12 @@ int simplest_udp_parser(int port)
     FILE *myout = stdout;
 
     FILE *fp1 = fopen("output_dump.ts","wb+");
-    
+
 }
 
 int main(int argc,char *argv[])
 {
-
+    simplest_udp_parser(8880);
 
     return 0;
 }
