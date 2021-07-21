@@ -37,15 +37,37 @@ typedef struct MPEGTS_FIXED_HEADER{
 int simplest_udp_parser(int port)
 {
     int cnt = 0;
+    int sock;
 
     FILE *myout = stdout;
 
     FILE *fp1 = fopen("output_dump.ts","wb+");
 
+    sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    if(sock < 0)
+    {
+        printf("create socket error...\r\n");
+        return -1;
+    }
+
+    sockaddr_in serAddr;
+	serAddr.sin_family = AF_INET;
+	serAddr.sin_port = htons(port);
+	serAddr.sin_addr.S_un.S_addr = INADDR_ANY;
+	if(bind(sock, (sockaddr *)&serAddr, sizeof(serAddr)) == SOCKET_ERROR){
+		printf("bind error !");
+		close(sock);
+		return -1;
+	}
+
+    
+
+
 }
 
 int main(int argc,char *argv[])
 {
+    printf("simplest_udp_parser demo...\r\n");
     simplest_udp_parser(8880);
 
     return 0;
