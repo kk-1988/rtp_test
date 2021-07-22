@@ -6,7 +6,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-//#pragma pack(1)
+#pragma pack(1)
 
 typedef struct RTP_FIXED_HEADER
 {
